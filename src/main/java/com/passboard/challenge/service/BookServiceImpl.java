@@ -18,7 +18,7 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public List<Book> findBookIsBorrowable(String authorName) {
+    public List<Book> findBookIsBorrowable() {
         return null;
     }
 }

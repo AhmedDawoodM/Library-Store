@@ -8,6 +8,6 @@ public interface BookService {
 
     List<Book> findBookByName(String name);
     List<Book> findBookByAuthor(String authorName);
-    List<Book> findBookIsBorrowable(String authorName);
+    List<Book> findBookIsBorrowable();
 
 }
