@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class BookServiceImpl implements BookService{
+
     @Override
     public List<Book> findBookByName(String name) {
 
@@ -49,7 +50,7 @@ public class BookServiceImpl implements BookService{
         return searchResult;
     }
 
-    List<Book> simulateDatabaseReturnList() {
+    private List<Book> simulateDatabaseReturnList() {
         Book book1 = new Book(1, "Days", new Author(11,"Taha Hussein"), 4);
         Book book2 = new Book(2, "The Bro Code", new Author(22,"Davinci"), 8);
         Book book3 = new Book(3, "The Play Book", new Author(33,"Solvan King"), 6);
@@ -69,7 +70,7 @@ public class BookServiceImpl implements BookService{
         return books;
     }
 
-    boolean isBorrowable(Book book){
+    private boolean isBorrowable(Book book){
         if(book.getQty() <= 1)
             return false;
         return true;
