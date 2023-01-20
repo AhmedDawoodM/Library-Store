@@ -17,21 +17,19 @@ public class BookController {
     BookService bookService;
 
     @GetMapping("findByName")
-    String findBookByName(String bookName) {
-        bookService.findBookByName(bookName);
-        return "";
+    List<Book> findBookByName(String bookName) {
+        return bookService.findBookByName(bookName);
     }
 
     @GetMapping("findByAuthor")
-    String findBookByAuthor(String authorName) {
-        bookService.findBookByAuthor(authorName);
-        return "";
+    List<Book> findBookByAuthor(String authorName) {
+        return bookService.findBookByAuthor(authorName);
     }
 
     @GetMapping("isBorrowable")
-    String findBookIsBorrowable() {
-        bookService.findBookIsBorrowable();
-        return "";
+    List<Book> findBookIsBorrowable() {
+        return bookService.findBookIsBorrowable();
+
     }
 
 }

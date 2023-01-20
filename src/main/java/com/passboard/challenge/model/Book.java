@@ -6,11 +6,10 @@ public class Book {
     String name;
     Category category;
     Author author;
-    String Description;
+    String description;
     int qty;
     double buyPrice;
     double borrowPrice;
-    boolean isBorrowable;
 
     public Book() {
     }
@@ -21,18 +20,16 @@ public class Book {
                 String description,
                 int qty,
                 double buyPrice,
-                double borrowPrice,
-                boolean isBorrowable) {
+                double borrowPrice) {
 
         this.id = id;
         this.name = name;
         this.category = category;
         this.author = author;
-        Description = description;
+        this.description = description;
         this.qty = qty;
         this.buyPrice = buyPrice;
         this.borrowPrice = borrowPrice;
-        this.isBorrowable = isBorrowable;
     }
 
     public long getId() {
@@ -68,11 +65,11 @@ public class Book {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public int getQty() {
@@ -99,11 +96,4 @@ public class Book {
         this.borrowPrice = borrowPrice;
     }
 
-    public boolean isBorrowable() {
-        return isBorrowable;
-    }
-
-    public void setBorrowable(boolean borrowable) {
-        isBorrowable = borrowable;
-    }
 }

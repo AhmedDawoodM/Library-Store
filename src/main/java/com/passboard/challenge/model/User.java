@@ -17,6 +17,12 @@ public class User {
         this.balance = balance;
     }
 
+    public User(long id, String name, double balance) {
+        this.id = id;
+        this.name = name;
+        this.balance = balance;
+    }
+
     public long getId() {
         return id;
     }
