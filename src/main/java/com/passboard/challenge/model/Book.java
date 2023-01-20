@@ -14,6 +14,14 @@ public class Book {
     public Book() {
     }
 
+    public Book(long id, String name, Author author, int qty) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.qty = qty;
+
+    }
+
     public Book(long id, String name,
                 Category category,
                 Author author,
