@@ -50,9 +50,11 @@ public class UserServiceImpl implements UserService{
         List<Book> booksRetrieved = simulateDatabaseReturnList();
         for (Book book : booksRetrieved){
             if(isExist(book)) {
-                book.setQty(book.getQty() - 1);
-                totalPrice += book.getBorrowPrice();
-                books.add(book);
+                if(isBorrowable(book)) {
+                    book.setQty(book.getQty() - 1);
+                    totalPrice += book.getBorrowPrice();
+                    books.add(book);
+                }
             }
         }
         if (user.getBalance() > totalPrice) {
@@ -77,14 +79,14 @@ public class UserServiceImpl implements UserService{
                 new Category(11,"Comedy"),
                 new Author(111,"Albert Divido"),
                 "This Book is about fantasy and comedy",
-                10, 50, 5.5);
+                10, 50, 5.5, true);
 
         Book book2 = new Book(
                 1, "The one",
                 new Category(22,"Horror"),
                 new Author(222,"Daniel Lewis"),
                 "This Book is about crime and mystery",
-                5, 70, 7.75);
+                5, 70, 7.75, true);
 
         books.add(book1);
         books.add(book2);
@@ -92,9 +94,8 @@ public class UserServiceImpl implements UserService{
         return books;
     }
 
-
     private boolean isBorrowable(Book book){
-       if(book.getQty() <= 1)
+       if(book.getQty() <= 1 || book.getBorrowable() == false)
            return false;
        return true;
     }

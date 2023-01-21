@@ -10,15 +10,17 @@ public class Book {
     int qty;
     double buyPrice;
     double borrowPrice;
+    boolean borrowable;
 
     public Book() {
     }
 
-    public Book(long id, String name, Author author, int qty) {
+    public Book(long id, String name, Author author, int qty, boolean borrowable) {
         this.id = id;
         this.name = name;
         this.author = author;
         this.qty = qty;
+        this.borrowable = borrowable;
 
     }
 
@@ -28,7 +30,8 @@ public class Book {
                 String description,
                 int qty,
                 double buyPrice,
-                double borrowPrice) {
+                double borrowPrice,
+                boolean borrowable) {
 
         this.id = id;
         this.name = name;
@@ -38,6 +41,7 @@ public class Book {
         this.qty = qty;
         this.buyPrice = buyPrice;
         this.borrowPrice = borrowPrice;
+        this.borrowable = borrowable;
     }
 
     public long getId() {
@@ -104,4 +108,11 @@ public class Book {
         this.borrowPrice = borrowPrice;
     }
 
+    public boolean getBorrowable() {
+        return borrowable;
+    }
+
+    public void setBorrowable(boolean borrowable) {
+        this.borrowable = borrowable;
+    }
 }
