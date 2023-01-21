@@ -12,7 +12,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService{
 
     @Override
-    public Cart checkoutCart(List<Book> books) {
+    public Cart buyCart(List<Book> books) {
 
         double totalPrice = 0;
         User user = new User(121212, "Mohamed Adel", 500);
