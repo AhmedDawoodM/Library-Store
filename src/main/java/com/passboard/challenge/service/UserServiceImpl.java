@@ -1,15 +1,17 @@
 package com.passboard.challenge.service;
 
 import com.passboard.challenge.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
 @Service
 public class UserServiceImpl implements UserService{
+
+    @Autowired
+    BookServiceRestrictions bookServiceRestrictions;
 
     @Override
     public Cart buyCart(List<Book> books) {
@@ -17,9 +19,9 @@ public class UserServiceImpl implements UserService{
         double totalPrice = 0;
         User user = new User(121212, "Mohamed Adel", 500);
 
-        List<Book> booksRetrieved = simulateDatabaseReturnList();
+        List<Book> booksRetrieved = bookServiceRestrictions.simulateDatabaseReturnCartBuyOrBorrow();
         for (Book book : booksRetrieved){
-            if(isExist(book)) {
+            if(bookServiceRestrictions.isExist(book)) {
                     book.setQty(book.getQty() - 1);
                     totalPrice += book.getBuyPrice();
                     books.add(book);
@@ -47,10 +49,10 @@ public class UserServiceImpl implements UserService{
         double totalPrice = 0;
         User user = new User(104499, "Ahmed Dawood", 100);
 
-        List<Book> booksRetrieved = simulateDatabaseReturnList();
+        List<Book> booksRetrieved = bookServiceRestrictions.simulateDatabaseReturnCartBuyOrBorrow();
         for (Book book : booksRetrieved){
-            if(isExist(book)) {
-                if(isBorrowable(book)) {
+            if(bookServiceRestrictions.isExist(book)) {
+                if(bookServiceRestrictions.isBorrowable(book)) {
                     book.setQty(book.getQty() - 1);
                     totalPrice += book.getBorrowPrice();
                     books.add(book);
@@ -70,42 +72,6 @@ public class UserServiceImpl implements UserService{
         } else {
             return null;
         }
-    }
-
-    private List<Book> simulateDatabaseReturnList(){
-        List<Book> books = new ArrayList<>();
-        Book book1 = new Book(
-                1, "Days of our lifes",
-                new Category(11,"Comedy"),
-                new Author(111,"Albert Divido"),
-                "This Book is about fantasy and comedy",
-                10, 50, 5.5, true);
-
-        Book book2 = new Book(
-                1, "The one",
-                new Category(22,"Horror"),
-                new Author(222,"Daniel Lewis"),
-                "This Book is about crime and mystery",
-                5, 70, 7.75, true);
-
-        books.add(book1);
-        books.add(book2);
-
-        return books;
-    }
-
-    private boolean isBorrowable(Book book){
-       if(book.getQty() <= 1 || book.getBorrowable() == false)
-           return false;
-       return true;
-    }
-
-
-
-    private boolean isExist(Book book){
-        if(book.getQty() >= 1)
-            return true;
-        return false;
     }
 
 }
