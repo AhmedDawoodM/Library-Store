@@ -1,7 +1,7 @@
 # Library-Store
 
 # Overview
-   * So apparently I am going to discuss the flow here about the tasks, I tried to apply a scalable structure so it can be modified anytime.
+   * So apparently I am going to discuss the flow here about the task, I tried to apply a scalable structure so it can be modified anytime.
    * I didn't use database, but instead I created a function which define objects that will be created when needed.
    * The structure of the controller is kinda normal, so we are going to move on with "Services".
      * UserService: the "UserService" contains two main functions one for "buy" and the other for "borrow",
